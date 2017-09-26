@@ -400,3 +400,58 @@ d) imprimir o comprimento da fila.
 2-> Escreva um programa p/ simular o funcionamento
 de uma fila de N inteiros num vetor de M posições tal que N > M = 6.
 Considerar as mesmas funções do exercício anterior.
+
+Exemplo:
+  Menor distância entra cidades
+
+
+-- - - - - -  - - - - - - - - > 0
+|                               ^
+1 < - - - - - - - - - - - - - - | - - - - 5
+^                               |
+|                               |
+|                               |
+|                               |
+|                               |
+2 ----------------------------> 4
+^                               ^
+|                               |
+|-- - -- -- - - - - 3 - - - - -
+
+
+    0  1  2  3  4  5
+0  [0][0][0][0][0][0]
+1  [1][0][0][0][0][0]
+2  [0][1][0][0][1][0]
+3  [0][0][1][0][1][0]
+4  [1][0][0][0][0][0]
+5  [0][1][0][0][0][0]
+
+
+int *distancias(int A[][6], int c){
+  int *d, j;
+  int fila[6], ini, fim;
+  int i, di;
+
+  d = malloc(6 * sizeof(int));
+  for(j = 0; j < 6; j++) d[j] = 6;
+  d[c] = 0;
+
+  ini = 0;
+  fim = 0;
+  fila[fim++] = c;
+
+  while(ini != fim){
+    i = fila[ini++];
+    di = d[i];
+    for(j = 0; j < 6; j++)
+    {
+      if(A[i][i] == 1 && d[j] >= 6)
+      {
+        d[j] = di + 1;
+        fila[fim++] = j;
+      }
+    }
+  }
+  return(d);
+}
