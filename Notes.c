@@ -455,3 +455,79 @@ int *distancias(int A[][6], int c){
   }
   return(d);
 }
+---------------------------------------------------------------
+
+Pilhas -> estruturas de dados que admitem inserção e remoção
+de elementos, segundo a política LIFO ("Last in First Out")
+
+implementação em um vetor:
+
+n - 1[  ]         Dicas:
+.    [  ]     * Se topo == 0 -> pilha vazia
+.    [  ]     * Se topo == N -> pilha cheia
+.    [  ]     * p/ inserir/empilhar ->
+4    [  ]         pilha[topo++] = x;
+3    [  ]             (ou to_push ou push)
+2    [  ]<- topo
+1    [**]     * p/ remover/desempilhar ->
+0    [**]        y = pilha[--topo]
+    .pilha            (ou to_pop ou pop)
+
+int pilha[N]
+
+
+Exemplo de uso:
+a) Construindo uma função p/ checar se uma sequência de colchetes
+e parênteses está bem formada:
+
+int bemFormada(char *s)
+{
+  char *pilha; int topo;
+  int n, i;
+  n = strlen(s);
+
+  pilha = malloc(n*sizeof(char));
+  topo = 0;
+  for(i = 0; s[i]!='\0'; i++)
+  {
+    switch(s[i]){
+      case ')':
+          if(topo != 0 && pilha[topo-1] == '(')
+            topo--;
+          else
+            return 0;
+          break;
+
+      case ']':
+          if(topo != 0 && pilha[topo-1] == '[')
+            topo--;
+          else
+            return 0;
+          break;
+
+      default:
+          pilha[topo++] = s[i];
+    }
+  }
+}
+
+b) Implementar uma função que consiga ler uma função
+em notação infixa p/ notação polonesa (posfixa):
+
+------------------------------------------------------------------------------
+| infixa                              |           POLONESA (POSFIXA)          |
+------------------------------------------------------------------------------
+| (A+B*C)                             |                                       |
+------------------------------------------------------------------------------
+| (A*(B+C)/D-E)                       |                                       |
+------------------------------------------------------------------------------
+| (A+B*(C-D *(E -F)-G*H)-I*3)         |                                       |
+------------------------------------------------------------------------------
+| (A+B*C/D*E-F)                       |                                       |
+------------------------------------------------------------------------------
+| (A + (B - (C + (D - (E + F)))))     |                                       |
+------------------------------------------------------------------------------
+|(A * (B + (C * (D - (E * (F + G))))))|                                       |
+------------------------------------------------------------------------------
+
+* Ler apostila!
