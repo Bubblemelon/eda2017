@@ -531,3 +531,5 @@ em notação infixa p/ notação polonesa (posfixa):
 ------------------------------------------------------------------------------
 
 * Ler apostila!
+
+Procurar: percepção de conceitos de Pilhas e Filas
