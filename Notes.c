@@ -517,9 +517,9 @@ em notação infixa p/ notação polonesa (posfixa):
 ------------------------------------------------------------------------------
 | infixa                              |           POLONESA (POSFIXA)          |
 ------------------------------------------------------------------------------
-| (A+B*C)                             |                                       |
+| (A+B*C)                             |                 ABC*+                 |
 ------------------------------------------------------------------------------
-| (A*(B+C)/D-E)                       |                                       |
+| (A*(B+C)/D-E)                       |              ABC+*D/E-                |
 ------------------------------------------------------------------------------
 | (A+B*(C-D *(E -F)-G*H)-I*3)         |                                       |
 ------------------------------------------------------------------------------
@@ -533,3 +533,72 @@ em notação infixa p/ notação polonesa (posfixa):
 * Ler apostila!
 
 Procurar: percepção de conceitos de Pilhas e Filas
+      i                   j
+inf [][][][] ---->  posf [][][][][]
+    |                  ^
+    |                  |
+    |------> pilha -----
+              []
+              []
+              []
+              []  <- topo
+
+char *infixaParaPosfixa(char *inf) {
+  char *posf; char *pilha; int topo;
+  int n, i, j; char x;
+
+  n = strlen(inf);
+  posf = malloc(n * sizeof(char));
+  pilha = malloc(n * sizeof(char));
+
+  topo = 0;
+  pilha[topo++] = inf[0];
+  j = 0;
+  for(i = 0; inf[i] != '\0'; i++)
+  {
+    switch (inf[i]) {
+      case '(':
+        pilha[topo++] = inf[i];
+        break;
+
+      case ')':
+        while(1){
+          x = pilha[--topo];
+          if(x == '(')
+            break;
+          posf[j++] = x;
+        }
+        break;
+
+      case '+':
+      case '-':
+        while(1) {
+          x = pilha[topo-1];
+          if(x == '(')
+            break;
+          topo--;
+          posf[j++] = x;
+        }
+        pilha[topo++] = inf[i];
+        break;
+
+      case '*':
+      case '/':
+        while(1) {
+          x = pilha[topo-1];
+          if(x == '(' || x == '+' || x == '-')
+            break;
+          topo--;
+          posf[j++] = x;
+        }
+        pilha[topo++] = inf[i];
+        break;
+
+      default:
+        posf[j++] = inf[i];
+    }
+  }
+  free(pilha);
+  posf[j] = '\0';
+  return posf;
+}
