@@ -46,6 +46,7 @@ void cria(int L[N][N]) { // funcao para criacao de um labirinto
 	}
 	L[5][2] = PAREDE;
 }/* fim­cria */
+
 void exibe(int L[N][N]) { // funcao para exibicao de um labirinto
 	int i, j;
 	for(i=0; i<N; i++) {
@@ -193,4 +194,3 @@ int main(void) { // Função principal
 	}while( toupper(r)!='N' );
 	return 0;
 }
-/* fim­main */

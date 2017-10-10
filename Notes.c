@@ -615,3 +615,155 @@ Exercício Labirinto:
 
 ** -> parede
 [  ] -> espaços vazios
+Objetivo: Mostrar o menor caminho!
+Olhar: ./Provas/Diarios_de_Bordo/Labirinto.c
+---------------------------------------------------------------
+Pilhas em listas Encadeadas
+
+1) Pilha vazia
+
+topo -----
+          |
+          V
+        .NULL
+          ^
+          |
+        head
+
+2) Pilha com 1 elemento
+
+topo -----
+          |
+          V
+        [INFO|*]-->
+          ^
+          |
+        head
+
+3) Pilha com 2 ou mais elementos
+
+                  topo -----
+                           |
+                           V
+  [INFO|*]-->[INFO|*]-->[INFO|*]
+    ^
+    |
+  head
+
+4) P/ inserir na pilha:
+  no *p;
+  p = malloc(...);
+  p -> info = x;
+  p -> prox = topo;
+  topo = p;
+
+5) P/ remover da pilha:
+  no *p;
+  p = topo;
+  if(p != NULL){
+    topo = topo -> prox;
+    x = p -> info;
+    free(p);
+  }
+  return x;
+---------------------------------------------------------------
+Diário de Bordo 05/10
+1) Elaborar um programa para receber uma expressão em notação
+polonesa e gerar o resultado da expressão.
+  234+*
+  = 27*
+  = 14//
+A pilha de resolução deve ser implementada em lista encadeada.
+
+2) Elaborar um programa que manipule uma lista circular
+simplesmente encadeada de nºs inteiros ordenados (não repetidos)
+---------------------------------------------------------------
+Árvores
+Estrutura de Dados não linear
+
+Comparando com listas e vetores:
+[ Operação\Estrutura | Vetores | Listas | Árvores ]
+[ Consulta           |   √     |   X    |    √    ]
+[ Inserção           |   X     |   √    |    √    ]
+[ Remoção            |   X     |   √    |    √    ]
+[ Atualização        |   √     |   X    |    √    ]
+
+√ = Easy -> Eficiente
+X = Not Easy -> Não Eficiente
+
+Definição
+  Árvore T: Conjunto finito de elementos (Nós ou Vértices), tais que:
+    * Se T = ø -> árvore vazia
+    * Senão -> árvore não vazia
+    * Nesse caso, possui
+        (i) Um nó especial, chamado raiz
+        (ii) Os demais nós:
+           * Ou são um conjunto vazio
+             ou são dividos em n >= 1 Conjunto
+             disjuntos não vazios(T1, T2, ..., Tn)
+             de árvores (sub-árvores)
+
+Ex:
+
+----- T ------------
+|     |    |       |
+V     V    V       V
+T1   T2   T3 ... TN
+
+
+* Um nó sem sub-árvores e denominado
+nó - folha ou simplesmente folha.
+
+* Relações entre nós de uma árvore:
+  -> Se X é raiz da árvore e Y
+    é raiz do subárvore de X, então X
+    é pai de Y e Y é filho de X
+
+  -> X é ancestral de Y(e Y é
+  descendente de X) se X é Pai de Y,
+  ou se X é pai de algum ancestral de Y.
+
+  -> Dois nós são irmãos se são filhos do
+  mesmo pai
+
+  -> Se os nós Y1, Y2, ..., Yj são irmãos, e o nó
+  Z é filho de Y1, então Y2, ..., Yj são tios de Z.
+
+
+Exemplos:
+a)
+    ----- A ---- --> Raiz de Árvore
+    |     |    |
+    V     V    V
+--- B     C    D --> Filhos de A
+|   |          |
+|   |          |
+V   V          V
+E   F          G -> Filho de D
+  L. filhos de B
+
+Conceitos:
+ * O nível de um nó X é definido como:
+    * a raiz tem nível 1
+    * os demais tem nível = nível do PAI + 1
+
+obs: Os nós folhas são os de maior nível.
+
+* O grau de um nó X da árvore é igual ao
+n˚ de filhos de X.
+
+* O grau da árvore T é o maior entre os graus
+de todos os seus nós.
+---------------------------------------------------------------
+
+typedef struct no *pno;
+
+typedef struct no {
+  char info;
+  pno esq;
+  pno dir;
+}no;
+
+typedef pno tree;
+
+tree raiz;
