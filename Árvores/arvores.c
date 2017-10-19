@@ -1,6 +1,3 @@
-/*Lucas Juan Nogueira Novaes || Aluno Ciencia da computação CEUT
-email p/ contato novaeslucas@hotmail.com*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
