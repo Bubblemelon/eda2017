@@ -767,3 +767,64 @@ typedef struct no {
 typedef pno tree;
 
 tree raiz;
+
+---------------------------------------------------------------
+Árvores Binárias
+
+* Cada nó tem zero, um ou 2 filhos
+* Definição: Árvore binária é:
+  - uma árvore vazia ou
+  - um nó raiz com duas sub-árvores:
+    - sub-árvore da esquerda (sae)
+    - sub-árvore da direita (sad)
+
+Implementação de árvore binária:
+
+struct arv {
+    char info;
+    struct arv *esq;
+    struct arv *dir;
+};
+
+Exercício:
+1) Considere as funções arv_cria e arv_criavazia abaixo
+e mostre como fica a construção da seguinte árvore:
+        [a]
+      /     \
+   [b]      [c]
+     \     /   \
+     [d] [e]  [f]
+
+arv *arv_criavazia(){
+  return NULL;
+}
+
+arv *arv_cria(char c, arv *sae, arv *sad){
+  arv *p;
+  p = (arv*)malloc(sizeof(arv));
+  p -> info = c;
+  p -> esq = sae;
+  p -> dir = sad;
+
+  return p;
+};
+
+2) Considere o desenho de árvore apresentado no
+exercício anterior e monte um programa com as
+opções apresentadas a seguir:
+
+>>>> MENU <<<<
+0 - SAIR
+1 - Cria arvore (pre-definida)
+2 - Destroi a árvore
+3 - Consulta elemento
+4 - Imprime a arvore
+
+Opção: __
+
+a1 = arv_cria('d', arv_criavazia(), arv_criavazia());
+a2 = arv_cria('b', arv_criavazia(), a1);
+a3 = arv_cria('e', arv_criavazia(), arv_criavazia());
+a4 = arv_cria('f', arv_criavazia(), arv_criavazia());
+a5 = arv_cria('c',a3, a4);
+a = arv_cria('a', a2, a5); 
