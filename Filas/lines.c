@@ -87,6 +87,7 @@ int main()
 {
   Fila *f;
   float valor;
+  float liberado;
   int opcao;
   do {
     printf(">>>> MENU <<<<\n");
@@ -114,7 +115,8 @@ int main()
         break;
 
       case 3:
-      exclui(f);
+       liberado = exclui(f);
+       printf("%f",liberado);
         break;
 
       case 4: libera(f);
