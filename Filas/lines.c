@@ -104,7 +104,7 @@ int main()
         exit(1);
         break;
 
-      case 1: cria();
+      case 1: f = cria();
         break;
 
       case 2:
