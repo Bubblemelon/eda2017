@@ -67,17 +67,6 @@ int calculaPSF(cab *c, char s[MAX]){
   n = strlen(s);
   for(i=0; i<n; i++){
     k = s[i];
-  /*  if(k == '+'){
-      a=(pop(c));
-      b=(pop(c));
-      aux = (a.valor+b.valor);
-      push(c, aux);
-    }else{
-      aux = (s[i] - 48);// pode ser feito com s[i] - 47 tambem ao invés do atof
-      printf("%lf", aux);
-      push(c, aux);
-    }
-*/
     switch(k){
 
       case '+':
