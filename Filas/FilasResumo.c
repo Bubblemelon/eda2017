@@ -1,33 +1,33 @@
-Filas
-
-São estruturas de dados do tipo FIFO (first-in first-out), onde o primeiro elemento a ser inserido, será o primeiro a ser retirado, ou seja, adiciona-se itens no fim e remove-se do início.
-
-São exemplos de uso de fila em um sistema:
-
-Controle de documentos para impressão;
-Troca de mensagem entre computadores numa rede;
-etc.
-A implementação de filas pode ser realizada através de vetor (alocação do espaço de memória para os elementos é contígua) ou através de listas encadeadas (próxima aula).
-Operações com Fila:
-Todas as operações em uma fila podem ser imaginadas como as que ocorre numa fila de pessoas num banco, exceto que o elementos não se movem na fila, conforme o primeiro elemento é retirado. Isto seria muito custoso para o computador. O que se faz na realidade é indicar quem é o primeiro.
-
-criação da fila (informar a capacidade no caso de implementação sequencial - vetor);
-enfileirar (enqueue) - o elemento é o parâmetro nesta operação;
-desenfileirar (dequeue);
-mostrar a fila (todos os elementos);
-verificar se a fila está vazia (isEmpty);
-verificar se a fila está cheia (isFull - implementação sequencial - vetor).
-Supondo uma fila com capacidade para 5 elementos (5 nós).
-
-Na realidade a remoção de um elemento da fila é realizada apenas alterando-se a informação da posição do último.
-
-Para evitar problemas de não ser capaz de inserir mais elementos na fila, mesmo quando ela não está cheia, as referências primeiro e último circundam até o inicio do vetor, resultando numa fila circular.
-
-
-Desta forma a fila simula uma representação circular:
-
-
-Veja o algoritmo a seguir para uma fila de números reais:
+// Filas
+//
+// São estruturas de dados do tipo FIFO (first-in first-out), onde o primeiro elemento a ser inserido, será o primeiro a ser retirado, ou seja, adiciona-se itens no fim e remove-se do início.
+//
+// São exemplos de uso de fila em um sistema:
+//
+// Controle de documentos para impressão;
+// Troca de mensagem entre computadores numa rede;
+// etc.
+// A implementação de filas pode ser realizada através de vetor (alocação do espaço de memória para os elementos é contígua) ou através de listas encadeadas (próxima aula).
+// Operações com Fila:
+// Todas as operações em uma fila podem ser imaginadas como as que ocorre numa fila de pessoas num banco, exceto que o elementos não se movem na fila, conforme o primeiro elemento é retirado. Isto seria muito custoso para o computador. O que se faz na realidade é indicar quem é o primeiro.
+//
+// criação da fila (informar a capacidade no caso de implementação sequencial - vetor);
+// enfileirar (enqueue) - o elemento é o parâmetro nesta operação;
+// desenfileirar (dequeue);
+// mostrar a fila (todos os elementos);
+// verificar se a fila está vazia (isEmpty);
+// verificar se a fila está cheia (isFull - implementação sequencial - vetor).
+// Supondo uma fila com capacidade para 5 elementos (5 nós).
+//
+// Na realidade a remoção de um elemento da fila é realizada apenas alterando-se a informação da posição do último.
+//
+// Para evitar problemas de não ser capaz de inserir mais elementos na fila, mesmo quando ela não está cheia, as referências primeiro e último circundam até o inicio do vetor, resultando numa fila circular.
+//
+//
+// Desta forma a fila simula uma representação circular:
+//
+//
+// Veja o algoritmo a seguir para uma fila de números reais:
 
 #include
 
