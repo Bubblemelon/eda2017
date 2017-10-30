@@ -8,7 +8,7 @@ typedef struct{
     char nome[TAM_NOME];
 }infoPessoas;
 
-int adcionaPessoaFila(infoPessoas* fila,infoPessoas proxima, int tamanhoFila, int fim, int inicio){
+int adcionaPessoaFila(infoPessoas* fila, infoPessoas proxima, int tamanhoFila, int fim, int inicio){
     if(fim == tamanhoFila)
         fim = -1;
     fila[fim++] = proxima;
@@ -41,7 +41,6 @@ int main(){
             fim = adcionaPessoaFila(fila, proxima, pessoas, inicio, fim);
         }
         cestas--;
-        printf("cestas: %d\n", cestas);
     }
     if(cestas == 0){
         printf("%s RECEBEU A ULTIMA CESTA\n", proxima.nome);
