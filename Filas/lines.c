@@ -1,17 +1,15 @@
-/*
+ /*
   Dicas para implementação vetor normal:
      ini == fim -> fila vazia
      fim == N -> fila cheia
      fila[fim++] = x <- inserção
      y = fila[ini++] <- remoção
-
   Dicas para implementação vetor circular:
      ini == fim -> fila vazia
      (fim+1 == ini) ou (fim+1 == N) e (ini == 0) -> fila cheia
      X = fila[ini++]; se(ini == N) -> ini = 0; -> remoção
      fila[fim++] = y; se(fim == N) -> fim = 0; -> inserção
      se(fim+1 == ini || fim+1 == N && ini == 0) -> transbordando!
-
 Exercicios:
 1-> Escreva um programa para simular o funcionamento de uma fila
 num vetor de M posições de N inteiros, considerando N <= M = 6.
@@ -105,7 +103,7 @@ int main()
         exit(1);
         break;
 
-      case 1: f = cria();
+      case 1: cria();
         break;
 
       case 2:
